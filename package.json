@@ -3,9 +3,13 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "front": "pnpm --filter front run dev"
+    "front": "nx dev @agenda/front"
   },
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
   "dependencies": {},
   "devDependencies": {
     "@nx/js": "17.2.0",
