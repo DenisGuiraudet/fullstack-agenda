@@ -1,8 +1,10 @@
 {
-  "name": "org",
+  "name": "@agenda/monorepo",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "front": "pnpm --filter front run dev"
+  },
   "private": true,
   "dependencies": {},
   "devDependencies": {
