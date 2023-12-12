@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { Select } from '@agenda/ui'
+import Select from '@agenda/ui/src/components/Select/Select.vue'
 
 const MONTHS = [
   'January',

@@ -21,7 +21,10 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { RouterView, useRoute, useRouter } from 'vue-router'
-import { AdminLayout, Menu, MenuItemType, SidePanel } from '@agenda/ui'
+import AdminLayout from '@agenda/ui/src/layouts/AdminLayout.vue'
+import Menu from '@agenda/ui/src/components/Menu/Menu.vue'
+import { MenuItemType } from '@agenda/ui/src/components/Menu/types'
+import SidePanel from '@agenda/ui/src/components/SidePanel/SidePanel.vue'
 
 const sidepanelOpen = ref(false)
 

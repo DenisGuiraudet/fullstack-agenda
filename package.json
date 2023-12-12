@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "back": "nx dev @agenda/back",
     "front": "nx dev @agenda/front",
     "storybook": "nx storybook @agenda/storybook",
     "format": "nx run-many -t format"
@@ -13,7 +14,9 @@
     "libs/*"
   ],
   "dependencies": {
-    "@agenda/config": "workspace:*"
+    "@agenda/config": "workspace:*",
+    "@trpc/client": "^10.44.1",
+    "@trpc/server": "^10.44.1"
   },
   "devDependencies": {
     "@nx/js": "17.2.0",

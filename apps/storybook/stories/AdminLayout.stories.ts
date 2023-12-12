@@ -1,4 +1,4 @@
-import { AdminLayout } from '@agenda/ui'
+import AdminLayout from '@agenda/ui/src/layouts/AdminLayout.vue'
 
 export default {
   title: 'Ui/layouts/AdminLayout',

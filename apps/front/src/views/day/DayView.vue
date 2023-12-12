@@ -19,5 +19,5 @@
 </template>
 
 <script setup lang="ts">
-import { ViewLayout } from '@agenda/ui'
+import ViewLayout from '@agenda/ui/src/layouts/ViewLayout.vue'
 </script>

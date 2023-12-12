@@ -51,24 +51,12 @@
 
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
-import { ViewLayout } from '@agenda/ui'
+import { createTRPCProxyClient, httpBatchLink } from '@trpc/client';
+import type { AppRouter } from '@agenda/back/src/index'
+import ViewLayout from '@agenda/ui/src/layouts/ViewLayout.vue'
 import SelectMonth from '../../components/SelectMonth/SelectMonth.vue'
 import SelectYear from '../../components/SelectMonth/SelectYear.vue'
 
-const MONTH_NAMES = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December'
-]
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 const today = new Date()
@@ -78,6 +66,24 @@ const year = ref<number>(today.getFullYear())
 const beforeDays = ref<number[]>([])
 const activeDays = ref<number[]>([])
 const afterDays = ref<number[]>([])
+
+const trpc = createTRPCProxyClient<AppRouter>({
+  links: [
+    httpBatchLink({
+      url: 'http://localhost:2022',
+      fetch(url, options) {
+        return fetch(url, {
+          ...options,
+          credentials: 'include',
+        });
+      },
+    }),
+  ],
+});
+
+trpc.greeting.hello.query('world').then((data) => {
+  console.log(data)
+})
 
 onMounted(() => {
   computeDaysToDisplay()
