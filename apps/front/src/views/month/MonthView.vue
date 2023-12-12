@@ -51,7 +51,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
-import { createTRPCProxyClient, httpBatchLink } from '@trpc/client';
+import { createTRPCProxyClient, httpBatchLink } from '@trpc/client'
 import type { AppRouter } from '@agenda/back/src/index'
 import ViewLayout from '@agenda/ui/src/layouts/ViewLayout.vue'
 import SelectMonth from '../../components/SelectMonth/SelectMonth.vue'
@@ -70,18 +70,12 @@ const afterDays = ref<number[]>([])
 const trpc = createTRPCProxyClient<AppRouter>({
   links: [
     httpBatchLink({
-      url: 'http://localhost:2022',
-      fetch(url, options) {
-        return fetch(url, {
-          ...options,
-          credentials: 'include',
-        });
-      },
-    }),
-  ],
-});
+      url: 'http://localhost:2022'
+    })
+  ]
+})
 
-trpc.greeting.hello.query('world').then((data) => {
+trpc.greeting.hello.query({ name: 'world' }).then((data) => {
   console.log(data)
 })
 
