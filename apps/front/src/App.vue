@@ -4,10 +4,7 @@
       <Menu :items="routeItems" :selected-name="route.name" />
     </template>
 
-    <template #header>
-      Header
-      <button @click="openSidePanel">click</button>
-    </template>
+    <button @click="openSidePanel">click</button>
 
     <RouterView />
 

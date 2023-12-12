@@ -1,3 +1,11 @@
-<template>Day</template>
+<template>
+  <ViewLayout>
+    <template #header> Header </template>
 
-<script setup lang="ts"></script>
+    Day
+  </ViewLayout>
+</template>
+
+<script setup lang="ts">
+import { ViewLayout } from '@agenda/ui'
+</script>
