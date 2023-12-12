@@ -1,6 +1,8 @@
 <template>
-  <div class="relative min-h-full">
-    <slot name="menu" />
+  <div class="relative h-full m-h-full flex flex-col overflow-hidden">
+    <div class="flex-none">
+      <slot name="menu" />
+    </div>
 
     <slot />
 
