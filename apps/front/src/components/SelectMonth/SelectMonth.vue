@@ -1,15 +1,15 @@
 <template>
   <Select
-    :items="MONTH_NAMES"
-    :selected-item="MONTH_NAMES[selectedMonth]"
-    @update:selected-item="(value) => $emit('update:selectedMonth', MONTH_NAMES.indexOf(value))"
+    :items="MONTHS"
+    :selected-item="MONTHS[selectedMonth]"
+    @update:selected-item="(value) => $emit('update:selectedMonth', MONTHS.indexOf(value))"
   />
 </template>
 
 <script setup lang="ts">
 import { Select } from '@agenda/ui'
 
-const MONTH_NAMES = [
+const MONTHS = [
   'January',
   'February',
   'March',

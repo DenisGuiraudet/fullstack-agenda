@@ -2,6 +2,7 @@
   <ViewLayout>
     <template #header>
       <SelectMonth
+        class="z-20"
         :selected-month="month"
         @update:selected-month="
           (value) => {
@@ -9,40 +10,39 @@
           }
         "
       />
+      <SelectYear
+        class="z-10"
+        :selected-year="year"
+        @update:selected-year="
+          (value) => {
+            year = value
+          }
+        "
+      />
     </template>
 
-    <div class="antialiased sans-serif bg-gray-100 h-screen">
-      <div class="container mx-auto px-4 py-2 md:py-24">
-        <div class="bg-white rounded-lg shadow overflow-hidden">
-          <div class="-mx-1 -mb-1">
-            <div class="flex flex-wrap" style="margin-bottom: -40px">
-              <template v-for="day in DAYS" :key="day">
-                <div style="width: 14.26%" class="px-2 py-2">
-                  <div class="text-gray-600 text-sm uppercase tracking-wide font-bold text-center">
-                    {{ day }}
-                  </div>
-                </div>
-              </template>
-            </div>
-
-            <div class="flex flex-wrap border-t border-l">
-              <template v-for="blankDay in beforeDays">
-                <div
-                  style="width: 14.28%; height: 120px"
-                  class="px-4 pt-2 border-r border-b relative"
-                />
-              </template>
-
-              <template v-for="date in activeDays" :key="date">
-                <div
-                  style="width: 14.28%; height: 120px"
-                  class="px-4 pt-2 border-r border-b relative"
-                >
-                  <div style="height: 80px" class="overflow-y-auto mt-1">{{ date }}</div>
-                </div>
-              </template>
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+      <div class="min-w-[896px]">
+        <div class="grid grid-cols-7 -mb-10">
+          <div v-for="day in DAYS" :key="day" class="px-2 py-2">
+            <div class="text-gray-600 text-sm uppercase tracking-wide font-bold text-center">
+              {{ day }}
             </div>
           </div>
+        </div>
+
+        <div class="grid grid-cols-7 border-t border-l">
+          <div v-for="day in beforeDays" class="h-32 px-4 pt-2 border-r border-b relative" />
+
+          <div
+            v-for="day in activeDays"
+            :key="day"
+            class="h-32 px-4 pt-2 border-r border-b relative"
+          >
+            <div class="h-20 mt-1">{{ day }}</div>
+          </div>
+
+          <div v-for="day in afterDays" class="h-32 px-4 pt-2 border-r border-b relative" />
         </div>
       </div>
     </div>
@@ -53,6 +53,7 @@
 import { onMounted, ref, watch } from 'vue'
 import { ViewLayout } from '@agenda/ui'
 import SelectMonth from '../../components/SelectMonth/SelectMonth.vue'
+import SelectYear from '../../components/SelectMonth/SelectYear.vue'
 
 const MONTH_NAMES = [
   'January',
@@ -76,6 +77,7 @@ const year = ref<number>(today.getFullYear())
 
 const beforeDays = ref<number[]>([])
 const activeDays = ref<number[]>([])
+const afterDays = ref<number[]>([])
 
 onMounted(() => {
   computeDaysToDisplay()
@@ -96,9 +98,8 @@ function computeDaysToDisplay() {
   const daysInMonth = new Date(year.value, month.value + 1, 0).getDate()
   const dayOfWeek = new Date(year.value, month.value).getDay()
 
-  console.log(dayOfWeek)
-
   activeDays.value = [...Array(daysInMonth).keys()].map((foo) => foo + 1)
   beforeDays.value = [...Array(dayOfWeek).keys()].map((foo) => foo + 1)
+  afterDays.value = [...Array(7 - ((daysInMonth + dayOfWeek) % 7)).keys()].map((foo) => foo + 1)
 }
 </script>
