@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@agenda/config':
+        specifier: workspace:*
+        version: link:libs/config
     devDependencies:
       '@nx/js':
         specifier: 17.2.0
@@ -93,6 +97,9 @@ importers:
 
   apps/storybook:
     dependencies:
+      '@agenda/front':
+        specifier: workspace:*
+        version: link:../front
       '@agenda/ui':
         specifier: workspace:*
         version: link:../../libs/ui
@@ -130,6 +137,8 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+
+  libs/config: {}
 
   libs/ui:
     dependencies:
