@@ -1,8 +1,8 @@
-import { WelcomeItem } from '@agenda/ui'
+import { AdminLayout } from '@agenda/ui'
 
 export default {
-  title: 'Ui/WelcomeItem',
-  component: WelcomeItem,
+  title: 'Ui/layouts/AdminLayout',
+  component: AdminLayout,
   tags: ['autodocs']
 };
 

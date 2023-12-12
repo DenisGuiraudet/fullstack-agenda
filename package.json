@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "front": "nx dev @agenda/front",
-    "storybook": "nx storybook @agenda/storybook"
+    "storybook": "nx storybook @agenda/storybook",
+    "format": "nx run-many -t format"
   },
   "private": true,
   "workspaces": [
