@@ -1,16 +1,8 @@
 <template>
   <nav class="bg-gray-800">
-    <MenuBar
-      :items="items"
-      :selected-name="selectedName"
-      v-model:mobile-open="mobileOpen"
-    />
+    <MenuBar :items="items" :selected-name="selectedName" v-model:mobile-open="mobileOpen" />
     <Expand :duration="200">
-    <MenuMobile
-      v-if="mobileOpen"
-      :items="items"
-      :selected-name="selectedName"
-      />
+      <MenuMobile v-if="mobileOpen" :items="items" :selected-name="selectedName" />
     </Expand>
   </nav>
 </template>
@@ -20,7 +12,7 @@ import { PropType, ref } from 'vue'
 import MenuBar from './MenuBar.vue'
 import MenuMobile from './MenuMobile.vue'
 import { MenuItemType } from './types'
-import Expand from '../../transitions/Expand.vue';
+import Expand from '../../transitions/Expand.vue'
 
 defineProps({
   items: {
@@ -28,8 +20,7 @@ defineProps({
     required: true
   },
   selectedName: {
-    type: String,
-    required: true
+    type: String
   }
 })
 

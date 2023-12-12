@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-full">
+  <div class="relative min-h-full">
     <slot name="menu" />
 
     <header class="bg-white shadow">
@@ -15,6 +15,8 @@
         <slot />
       </div>
     </main>
+
+    <slot name="sidepanel" />
   </div>
 </template>
 

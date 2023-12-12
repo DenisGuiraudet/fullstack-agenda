@@ -30,8 +30,7 @@ defineProps({
     required: true
   },
   selectedName: {
-    type: String,
-    required: true
+    type: String
   }
 })
 </script>

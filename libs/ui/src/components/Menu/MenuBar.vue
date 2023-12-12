@@ -82,8 +82,7 @@ defineProps({
     required: true
   },
   selectedName: {
-    type: String,
-    required: true
+    type: String
   },
   mobileOpen: {
     type: Boolean,
@@ -91,5 +90,5 @@ defineProps({
   }
 })
 
-defineEmits<{(e: 'update:mobileOpen', value: boolean): void}>()
+defineEmits<{ (e: 'update:mobileOpen', value: boolean): void }>()
 </script>
