@@ -14,9 +14,9 @@
     </div>
 
     <div class="flex space-x-4 mt-4">
-      <Button @click="add5">
-        +5
-      </Button>
+      <Button @click="() => add(5)"> +5 </Button>
+      <Button @click="() => add(500)"> +500 </Button>
+      <Button @click="() => add(5000)"> +5000 </Button>
     </div>
   </div>
 </template>
@@ -42,11 +42,11 @@ defineEmits(['update:selectedYear', 'update:selectedMonth'])
 
 const client = useTrpcClient()
 
-function add5 () {
+function add(count: number) {
   client.calendar.add.mutate({
     startDate: new Date(props.selectedYear, props.selectedMonth, 1).getTime(),
     endDate: new Date(props.selectedYear, props.selectedMonth + 1, 0).getTime(),
-    count: 5
+    count
   })
 }
 </script>

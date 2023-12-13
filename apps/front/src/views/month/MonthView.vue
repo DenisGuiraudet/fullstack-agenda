@@ -28,11 +28,7 @@
         </div>
 
         <div class="grid grid-cols-7">
-          <DayCell
-            v-for="day in beforeDays"
-            :key="`${year}-${month}-before-${day}`"
-            disabled
-          />
+          <DayCell v-for="day in beforeDays" :key="`${year}-${month}-before-${day}`" disabled />
 
           <DayCell
             v-for="day in activeDays"
@@ -43,11 +39,7 @@
             {{ day }}
           </DayCell>
 
-          <DayCell
-            v-for="day in afterDays"
-            :key="`${year}-${month}-after-${day}`"
-            disabled
-          />
+          <DayCell v-for="day in afterDays" :key="`${year}-${month}-after-${day}`" disabled />
         </div>
       </div>
     </div>
@@ -55,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { ViewLayout } from '@agenda/ui/layouts'
 import MonthHeader from '@/views/month/MonthHeader.vue'
 import DayCell from '@/components/DayCell.vue'
@@ -74,20 +66,22 @@ const activeDays = ref<number[]>([])
 const afterDays = ref<number[]>([])
 
 const client = useTrpcClient()
+let changeSubscription: any = null
 
 onMounted(() => {
   computeDaysToDisplay()
-
-  client.calendar.get.query({
-    startDate: new Date(year.value, month.value, 1).getTime(),
-    endDate: new Date(year.value, month.value + 1, 0).getTime()
-  }).then((data) => {
-    console.log(data)
-  })
+  getCalendar()
 })
 
 watch([month, year], () => {
   computeDaysToDisplay()
+  getCalendar()
+})
+
+onUnmounted(() => {
+  if (changeSubscription) {
+    changeSubscription.unsubscribe()
+  }
 })
 
 function computeDaysToDisplay() {
@@ -97,5 +91,31 @@ function computeDaysToDisplay() {
   activeDays.value = [...Array(daysInMonth).keys()].map((foo) => foo + 1)
   beforeDays.value = [...Array(dayOfWeek).keys()].map((foo) => foo + 1)
   afterDays.value = [...Array(7 - ((daysInMonth + dayOfWeek) % 7)).keys()].map((foo) => foo + 1)
+}
+
+function getCalendar() {
+  client.calendar.get
+    .query({
+      startDate: new Date(year.value, month.value, 1).getTime(),
+      endDate: new Date(year.value, month.value + 1, 0).getTime()
+    })
+    .then((data) => {
+      console.log(data)
+    })
+
+  changeSubscription = client.calendar.onChange.subscribe(
+    {
+      startDate: new Date(year.value, month.value, 1).getTime(),
+      endDate: new Date(year.value, month.value + 1, 0).getTime()
+    },
+    {
+      onData(data) {
+        console.log('received', data)
+      },
+      onError(error) {
+        console.error('error', error)
+      }
+    }
+  )
 }
 </script>

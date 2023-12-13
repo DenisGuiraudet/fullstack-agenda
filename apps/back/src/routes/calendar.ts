@@ -8,14 +8,14 @@ import { addHours } from '../utils/date'
 import { randomDate, randomSentence } from '../utils/random'
 
 // create a global event emitter (could be replaced by redis, etc)
-const ee = new EventEmitter();
+const ee = new EventEmitter()
 
 export interface CalendarOnChange {
   type: 'ADD' | 'DELETE' | 'UPDATE'
   events: CalEvent[]
 }
 
-export function calendarRouter (t: T) {
+export function calendarRouter(t: T) {
   return t.router({
     get: t.procedure
       .input(
@@ -27,10 +27,7 @@ export function calendarRouter (t: T) {
       .query(({ input }) => {
         const { startDate, endDate } = input
         return dbCalEvent.filter((event) => {
-          return (
-            event.start <= endDate &&
-            event.end >= startDate
-          )
+          return event.start <= endDate && event.end >= startDate
         })
       }),
 
@@ -55,7 +52,7 @@ export function calendarRouter (t: T) {
           })
         }
         dbCalEvent.push(...events)
-        ee.emit('change', { type: 'ADD', events });
+        ee.emit('change', { type: 'ADD', events })
       }),
 
     onChange: t.procedure
@@ -70,19 +67,16 @@ export function calendarRouter (t: T) {
           const { startDate, endDate } = input
           const onChange = ({ type, events }: CalendarOnChange) => {
             const filteredEvents = events.filter((event) => {
-              return (
-                event.start >= startDate &&
-                event.end <= endDate
-              )
+              return event.start >= startDate && event.end <= endDate
             })
             emit.next({ type, events: filteredEvents })
-          };
+          }
 
-          ee.on('change', onChange);
+          ee.on('change', onChange)
 
           return () => {
-            ee.off('change', onChange);
-          };
+            ee.off('change', onChange)
+          }
         })
       })
   })

@@ -1,23 +1,14 @@
 <template>
   <div class="h-32 border border-dashed relative">
-    <div
-      class="absolute"
-      :class="[
-        !disabled ? '-inset-1' : '',
-        colorClass
-      ]"
-    >
-      <div
-        v-if="$slots.default"
-        class="absolute h-24 mt-3 ml-3"
-      >
+    <div class="absolute" :class="[!disabled ? '-inset-1' : '', colorClass]">
+      <div v-if="$slots.default" class="absolute h-24 mt-3 ml-3">
         <slot />
       </div>
       <div
         v-if="!disabled"
         class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl"
       >
-       {{ count }}
+        {{ count }}
       </div>
     </div>
   </div>

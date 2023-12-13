@@ -1,4 +1,3 @@
-
 export interface CalEvent {
   uuid: string
   start: number // timestamp
