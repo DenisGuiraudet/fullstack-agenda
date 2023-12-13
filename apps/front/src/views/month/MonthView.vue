@@ -1,23 +1,19 @@
 <template>
   <ViewLayout>
     <template #header>
-      <SelectMonth
-        class="z-20"
+      <MonthHeader
         :selected-month="month"
         @update:selected-month="
           (value) => {
             month = value
           }
         "
-      />
-      <SelectYear
-        class="z-10"
-        :selected-year="year"
         @update:selected-year="
           (value) => {
             year = value
           }
         "
+        :selected-year="year"
       />
     </template>
 
@@ -61,8 +57,7 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
 import { ViewLayout } from '@agenda/ui/layouts'
-import SelectMonth from '@/components/SelectMonth.vue'
-import SelectYear from '@/components/SelectYear.vue'
+import MonthHeader from '@/views/month/MonthHeader.vue'
 import DayCell from '@/components/DayCell.vue'
 import { useTrpcClient } from '@/composables/trpc'
 
@@ -83,7 +78,10 @@ const client = useTrpcClient()
 onMounted(() => {
   computeDaysToDisplay()
 
-  client.greeting.hello.query({ name: 'world' }).then((data) => {
+  client.calendar.get.query({
+    startDate: new Date(year.value, month.value, 1).getTime(),
+    endDate: new Date(year.value, month.value + 1, 0).getTime()
+  }).then((data) => {
     console.log(data)
   })
 })

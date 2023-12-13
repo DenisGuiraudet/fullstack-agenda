@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.ts",
   "scripts": {
-    "dev": "tsx watch src/index",
+    "dev": "tsx watch index",
     "format": "prettier --write src/"
   },
   "dependencies": {
