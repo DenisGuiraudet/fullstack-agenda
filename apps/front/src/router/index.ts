@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import MonthView from '../views/month/MonthView.vue'
-import WeekView from '../views/week/WeekView.vue'
-import DayView from '../views/day/DayView.vue'
+import MonthView from '@/views/month/MonthView.vue'
+import WeekView from '@/views/week/WeekView.vue'
+import DayView from '@/views/day/DayView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

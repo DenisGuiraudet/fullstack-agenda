@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@agenda/back/*": ["./apps/back/*"],
+      "@agenda/front/*": ["./apps/front/*"],
+      "@agenda/storybook/*": ["./apps/storybook/*"],
+      "@agenda/ui/*": ["./libs/ui/*"]
+    }
+  }
+}

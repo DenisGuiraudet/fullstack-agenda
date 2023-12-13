@@ -53,9 +53,9 @@
 import { onMounted, ref, watch } from 'vue'
 import { createTRPCProxyClient, httpBatchLink } from '@trpc/client'
 import type { AppRouter } from '@agenda/back/src/index'
-import ViewLayout from '@agenda/ui/src/layouts/ViewLayout.vue'
-import SelectMonth from '../../components/SelectMonth/SelectMonth.vue'
-import SelectYear from '../../components/SelectMonth/SelectYear.vue'
+import { ViewLayout } from '@agenda/ui/layouts'
+import SelectMonth from '@/components/SelectMonth/SelectMonth.vue'
+import SelectYear from '@/components/SelectMonth/SelectYear.vue'
 
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 

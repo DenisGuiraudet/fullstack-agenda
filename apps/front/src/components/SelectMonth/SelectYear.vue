@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import Select from '@agenda/ui/src/components/Select/Select.vue'
+import { Select } from '@agenda/ui/components'
 
 const YEARS = ['2020', '2021', '2022', '2023', '2024', '2025']
 

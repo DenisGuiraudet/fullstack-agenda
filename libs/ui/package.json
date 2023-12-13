@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "main": "./main.js",
+  "exports": {
+    "./components": "./src/components/index.ts",
+    "./layouts": "./src/layouts/index.ts",
+    ".": "./main.js"
+  },
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",

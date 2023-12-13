@@ -1,4 +1,4 @@
-import Menu from '@agenda/ui/src/components/Menu/Menu.vue'
+import { Menu } from '@agenda/ui/components'
 
 export default {
   title: 'Ui/components/Menu',
