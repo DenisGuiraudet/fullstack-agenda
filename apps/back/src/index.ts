@@ -73,7 +73,7 @@ const { server, listen } = createHTTPServer({
 
 // ws server
 const wss = new WebSocketServer({ server })
-applyWSSHandler<AppRouter>({
+const wssHandler = applyWSSHandler<AppRouter>({
   wss,
   router: appRouter,
   createContext
@@ -83,4 +83,18 @@ setInterval(() => {
   console.log('Connected clients', wss.clients.size)
 }, 10000)
 
+wss.on('connection', (ws) => {
+  console.log(`➕➕ Connection (${wss.clients.size})`);
+  ws.once('close', () => {
+    console.log(`➖➖ Connection (${wss.clients.size})`);
+  });
+});
+
 listen(2022)
+
+process.on('SIGTERM', () => {
+  console.log('SIGTERM');
+  wssHandler.broadcastReconnectNotification();
+  wss.close();
+  server.close();
+});

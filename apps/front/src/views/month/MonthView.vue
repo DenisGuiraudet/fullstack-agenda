@@ -60,12 +60,11 @@
 
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
-import { createTRPCProxyClient, httpBatchLink } from '@trpc/client'
-import type { AppRouter } from '@agenda/back/src/index'
 import { ViewLayout } from '@agenda/ui/layouts'
 import SelectMonth from '@/components/SelectMonth.vue'
 import SelectYear from '@/components/SelectYear.vue'
 import DayCell from '@/components/DayCell.vue'
+import { useTrpc, useTrpcClient } from '@/composables/trpc'
 
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
@@ -79,32 +78,19 @@ const beforeDays = ref<number[]>([])
 const activeDays = ref<number[]>([])
 const afterDays = ref<number[]>([])
 
-const trpc = createTRPCProxyClient<AppRouter>({
-  links: [
-    httpBatchLink({
-      url: 'http://localhost:2022'
-    })
-  ]
-})
-
-trpc.greeting.hello.query({ name: 'world' }).then((data) => {
-  console.log(data)
-})
+const client = useTrpcClient()
 
 onMounted(() => {
   computeDaysToDisplay()
+
+  client.greeting.hello.query({ name: 'world' }).then((data) => {
+    console.log(data)
+  })
 })
 
 watch([month, year], () => {
   computeDaysToDisplay()
 })
-
-function isToday (day: number) {
-  const today = new Date()
-  const d = new Date(year.value, month.value, day)
-
-  return today.toDateString() === d.toDateString() ? true : false
-}
 
 function computeDaysToDisplay() {
   const daysInMonth = new Date(year.value, month.value + 1, 0).getDate()
