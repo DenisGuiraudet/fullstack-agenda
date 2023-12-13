@@ -31,25 +31,26 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-7 border-t border-l">
-          <div
+        <div class="grid grid-cols-7">
+          <DayCell
             v-for="day in beforeDays"
             :key="`${year}-${month}-before-${day}`"
-            class="h-32 px-4 pt-2 border-r border-b relative"
+            disabled
           />
 
-          <div
+          <DayCell
             v-for="day in activeDays"
             :key="`${year}-${month}-active-${day}`"
-            class="h-32 px-4 pt-2 border-r border-b relative"
+            :active="day === todayDay"
+            :count="day === 10 ? 0 : day * 60"
           >
-            <div class="h-20 mt-1">{{ day }}</div>
-          </div>
+            {{ day }}
+          </DayCell>
 
-          <div
+          <DayCell
             v-for="day in afterDays"
             :key="`${year}-${month}-after-${day}`"
-            class="h-32 px-4 pt-2 border-r border-b relative"
+            disabled
           />
         </div>
       </div>
@@ -64,10 +65,13 @@ import type { AppRouter } from '@agenda/back/src/index'
 import { ViewLayout } from '@agenda/ui/layouts'
 import SelectMonth from '@/components/SelectMonth.vue'
 import SelectYear from '@/components/SelectYear.vue'
+import DayCell from '@/components/DayCell.vue'
 
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 const today = new Date()
+const todayDay = today.getDate()
+
 const month = ref<number>(today.getMonth())
 const year = ref<number>(today.getFullYear())
 
