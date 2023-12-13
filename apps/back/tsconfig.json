@@ -6,7 +6,6 @@
       "strict": true,
       "moduleResolution": "node",
       "noEmit": true,
-      "baseUrl": "."
     },
     "include": ["src"],
     "exclude": ["node_modules"]

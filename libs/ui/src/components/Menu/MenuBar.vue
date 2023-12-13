@@ -4,9 +4,9 @@
       <div class="flex items-center">
         <div class="flex-shrink-0">
           <img
-            class="h-8 w-8"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-            alt="Your Company"
+            class="h-9 w-9"
+            src="https://purepng.com/public/uploads/large/big-chungus-jkg.png"
+            alt="Agenda"
           />
         </div>
 

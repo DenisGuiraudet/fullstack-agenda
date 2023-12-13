@@ -21,8 +21,8 @@
       />
     </template>
 
-    <div class="bg-white rounded-lg shadow overflow-hidden">
-      <div class="min-w-[896px]">
+    <div class="bg-white sm:rounded-lg shadow overflow-hidden">
+      <div class="min-w-[896px] -m-px">
         <div class="grid grid-cols-7 -mb-10">
           <div v-for="day in DAYS" :key="day" class="px-2 py-2">
             <div class="text-gray-600 text-sm uppercase tracking-wide font-bold text-center">
@@ -64,9 +64,9 @@ import { ViewLayout } from '@agenda/ui/layouts'
 import SelectMonth from '@/components/SelectMonth.vue'
 import SelectYear from '@/components/SelectYear.vue'
 import DayCell from '@/components/DayCell.vue'
-import { useTrpc, useTrpcClient } from '@/composables/trpc'
+import { useTrpcClient } from '@/composables/trpc'
 
-const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
 const today = new Date()
 const todayDay = today.getDate()

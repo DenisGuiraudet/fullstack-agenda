@@ -10,7 +10,7 @@
 
     <main class="flex-1 flex overflow-hidden">
       <div class="flex-1 overflow-auto">
-        <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl sm:py-6 sm:px-6 lg:px-8">
           <slot />
         </div>
       </div>

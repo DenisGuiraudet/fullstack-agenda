@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "main": ".",
+  "main": "index.ts",
   "scripts": {
     "dev": "tsx watch src/index",
     "format": "prettier --write src/"
