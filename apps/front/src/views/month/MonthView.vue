@@ -32,17 +32,25 @@
         </div>
 
         <div class="grid grid-cols-7 border-t border-l">
-          <div v-for="day in beforeDays" class="h-32 px-4 pt-2 border-r border-b relative" />
+          <div
+            v-for="day in beforeDays"
+            :key="`${year}-${month}-before-${day}`"
+            class="h-32 px-4 pt-2 border-r border-b relative"
+          />
 
           <div
             v-for="day in activeDays"
-            :key="day"
+            :key="`${year}-${month}-active-${day}`"
             class="h-32 px-4 pt-2 border-r border-b relative"
           >
             <div class="h-20 mt-1">{{ day }}</div>
           </div>
 
-          <div v-for="day in afterDays" class="h-32 px-4 pt-2 border-r border-b relative" />
+          <div
+            v-for="day in afterDays"
+            :key="`${year}-${month}-after-${day}`"
+            class="h-32 px-4 pt-2 border-r border-b relative"
+          />
         </div>
       </div>
     </div>
@@ -54,8 +62,8 @@ import { onMounted, ref, watch } from 'vue'
 import { createTRPCProxyClient, httpBatchLink } from '@trpc/client'
 import type { AppRouter } from '@agenda/back/src/index'
 import { ViewLayout } from '@agenda/ui/layouts'
-import SelectMonth from '@/components/SelectMonth/SelectMonth.vue'
-import SelectYear from '@/components/SelectMonth/SelectYear.vue'
+import SelectMonth from '@/components/SelectMonth.vue'
+import SelectYear from '@/components/SelectYear.vue'
 
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
@@ -87,9 +95,9 @@ watch([month, year], () => {
   computeDaysToDisplay()
 })
 
-function isToday(date) {
+function isToday (day: number) {
   const today = new Date()
-  const d = new Date(year.value, month.value, date)
+  const d = new Date(year.value, month.value, day)
 
   return today.toDateString() === d.toDateString() ? true : false
 }
