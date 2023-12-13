@@ -2,11 +2,11 @@
   <ViewLayout>
     <template #header> Header </template>
 
-    <div class="flex flex-col bg-white rounded-lg shadow overflow-auto">
+    <div class="flex flex-col bg-white sm:rounded-lg shadow overflow-auto">
       <div class="flex-1 flex p-4">
         <div class="flex-0"></div>
         <div class="flex-1">
-          <div v-for="i in 25" class="flex">
+          <div v-for="i in 25" :key="i" class="flex">
             <div class="flex-0 pr-4 text-lg">
               {{ `0${i - 1}`.slice(-2) + 'h00' }}
             </div>
