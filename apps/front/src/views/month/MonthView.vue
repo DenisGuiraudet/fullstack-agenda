@@ -27,7 +27,7 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-7 divide-x divide-y">
+        <div class="grid grid-cols-7">
           <DayCell v-for="day in beforeDays" :key="`${year}-${month}-before-${day}`" disabled />
 
           <DayCell
