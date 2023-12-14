@@ -53,7 +53,7 @@ export function calendarRouter(t: T) {
               randomValueBetween(1, random === 0 ? 36 : 12),
               randomValueBetween(0, 60)
             ),
-            data: `${i} ${randomSentence()}`
+            data: randomSentence()
           })
         }
         dbCalEvent.push(...events)

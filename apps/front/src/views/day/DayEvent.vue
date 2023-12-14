@@ -1,10 +1,22 @@
 <template>
   <div
     class="p-4 rounded-lg"
-    :class="isEventStartAfterIntervalStart ? 'bg-gray-300' : 'bg-gray-100'"
+    :class="
+      isEventStartAfterIntervalStart
+        ? 'bg-gradient-to-r from-purple-500 to-blue-300 to-45%'
+        : 'bg-blue-200 text-gray-600'
+    "
   >
-    <div class="text-base">{{ startTime }} - {{ endTime }} {{ diffLabel }}</div>
-    <div class="text-sm line-clamp-1">
+    <div class="text-base line-clamp-1">
+      <span>{{ startTime }} - {{ endTime }} {{ diffLabel }}</span>
+      <template v-if="!isEventStartAfterIntervalStart">
+        |
+        <span class="text-sm">
+          {{ event.data }}
+        </span>
+      </template>
+    </div>
+    <div v-if="isEventStartAfterIntervalStart" class="text-sm line-clamp-1">
       {{ event.data }}
     </div>
   </div>
@@ -49,8 +61,10 @@ const diffLabel = computed<string>(() => {
 
 const isEventStartAfterIntervalStart = computed<boolean>(() => {
   const eventStart = new Date(props.event.start)
-  return props.event.start >= props.dateStart && (
-    eventStart.getHours() === props.intervalHour && eventStart.getMinutes() >= props.intervalMinutes
+  return (
+    props.event.start >= props.dateStart &&
+    eventStart.getHours() === props.intervalHour &&
+    eventStart.getMinutes() >= props.intervalMinutes
   )
 })
 </script>

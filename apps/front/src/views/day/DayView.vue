@@ -14,7 +14,7 @@
             <div class="flex-1"><hr class="mt-2.5" /></div>
           </div>
 
-          <div class="space-y-2">
+          <div v-if="eventsPerHour[`${i - 1}h0`]" class="space-y-2">
             <div v-for="event in eventsPerHour[`${i - 1}h0`]" :key="event.uuid">
               <DayEvent
                 :event="event"
@@ -24,6 +24,7 @@
               />
             </div>
           </div>
+          <div v-else class="text-center">...</div>
 
           <template v-if="i !== 25">
             <div :id="`hour-${i - 1}-30`" class="flex py-2">
@@ -33,7 +34,7 @@
               <div class="flex-1"><hr class="mt-2.5" /></div>
             </div>
 
-            <div class="space-y-2">
+            <div v-if="eventsPerHour[`${i - 1}h30`]" class="space-y-2">
               <div v-for="event in eventsPerHour[`${i - 1}h30`]" :key="event.uuid">
                 <DayEvent
                   :event="event"
@@ -43,6 +44,7 @@
                 />
               </div>
             </div>
+            <div v-else class="text-center">...</div>
           </template>
         </template>
       </div>
@@ -61,8 +63,6 @@ import type { CalEvent } from '@agenda/back/src/db'
 const today = new Date()
 
 const date = ref<Date>(today)
-const hour = ref<number>(today.getHours())
-const minutes = ref<0 | 30>(today.getMinutes() < 30 ? 0 : 30)
 
 const dateStart = computed<number>(() => {
   return new Date(date.value).setHours(0, 0, 0, 0)
@@ -75,8 +75,7 @@ const client = useTrpcClient()
 let changeSubscription: any = null
 
 onMounted(() => {
-  getCalendar()
-  scrollToHour(hour.value, minutes.value)
+  getCalendar(true)
 })
 
 watch([date], () => {
@@ -90,7 +89,7 @@ onUnmounted(() => {
   }
 })
 
-function getCalendar() {
+function getCalendar(scroll = false) {
   if (changeSubscription) {
     changeSubscription.unsubscribe()
     changeSubscription = null
@@ -107,7 +106,7 @@ function getCalendar() {
       endDate: endTimestamp
     })
     .then((data: CalendarOnChange) => {
-      addToCalendar(data)
+      addToCalendar(data, scroll)
     })
 
   changeSubscription = client.calendar.changes.subscribe(
@@ -128,7 +127,7 @@ function getCalendar() {
   )
 }
 
-function addToCalendar(events: CalEvent[]) {
+function addToCalendar(events: CalEvent[], scroll = false) {
   const newEventsPerHour = JSON.parse(JSON.stringify(eventsPerHour.value))
 
   const startOfDate: number = new Date(date.value).setHours(0, 0, 0, 0)
@@ -193,9 +192,15 @@ function addToCalendar(events: CalEvent[]) {
   })
 
   eventsPerHour.value = newEventsPerHour
+  if (scroll) {
+    setTimeout(() => {
+      scrollToHour(today.getHours(), today.getMinutes() < 30 ? 0 : 30)
+    }, 100)
+  }
 }
 
 function scrollToHour(hour: number, minutes: 0 | 30) {
+  console.log('scrollToHour', hour, minutes)
   const hourElement = document.getElementById(`hour-${hour}-${minutes}`)
   if (hourElement) {
     hourElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
