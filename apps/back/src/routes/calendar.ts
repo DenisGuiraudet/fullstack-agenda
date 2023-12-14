@@ -55,7 +55,7 @@ export function calendarRouter(t: T) {
         ee.emit('change', { type: 'ADD', events })
       }),
 
-    onChange: t.procedure
+    changes: t.procedure
       .input(
         z.object({
           startDate: z.number(), // timestamp

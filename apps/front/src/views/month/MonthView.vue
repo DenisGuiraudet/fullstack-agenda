@@ -89,6 +89,7 @@ watch([month, year], () => {
 onUnmounted(() => {
   if (changeSubscription) {
     changeSubscription.unsubscribe()
+    changeSubscription = null
   }
 })
 
@@ -102,6 +103,11 @@ function computeDaysToDisplay() {
 }
 
 function getCalendar() {
+  if (changeSubscription) {
+    changeSubscription.unsubscribe()
+    changeSubscription = null
+  }
+
   countByDay.value = {}
 
   client.calendar.get
@@ -113,7 +119,7 @@ function getCalendar() {
       addToCalendar(data)
     })
 
-  changeSubscription = client.calendar.onChange
+  changeSubscription = client.calendar.changes
     .subscribe(
       {
         startDate: new Date(year.value, month.value, 1).getTime(),
