@@ -1,6 +1,6 @@
 <template>
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 items-center justify-between">
+    <div class="flex h-16 items-center">
       <div class="flex items-center">
         <div class="flex-shrink-0">
           <img
@@ -28,6 +28,10 @@
             </RouterLink>
           </div>
         </div>
+      </div>
+
+      <div class="text-base font-medium text-white ml-auto mr-4">
+        FPS: {{ fps }}
       </div>
 
       <div class="-mr-2 flex md:hidden">
@@ -73,8 +77,11 @@
 
 <script setup lang="ts">
 import { PropType } from 'vue'
+import { useFps } from '@vueuse/core'
 import { RouterLink } from 'vue-router'
 import { MenuItemType } from './types'
+
+const fps = useFps()
 
 defineProps({
   items: {
