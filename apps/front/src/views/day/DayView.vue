@@ -1,10 +1,7 @@
 <template>
   <ViewLayout>
     <template #header>
-      <DayHeader
-        class="z-10"
-        v-model:selected-date="date"
-      />
+      <DayHeader class="z-10" v-model:selected-date="date" />
     </template>
 
     <div v-if="date" class="flex flex-col bg-white sm:rounded-lg shadow overflow-auto">
