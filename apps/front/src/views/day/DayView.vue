@@ -58,6 +58,7 @@ import { ViewLayout } from '@agenda/ui/layouts'
 import { useTrpcClient } from '@/composables/trpc'
 import DayHeader from '@/views/day/DayHeader.vue'
 import DayEvent from '@/views/day/DayEvent.vue'
+import type { CalendarOnChange } from '@agenda/back/src/routes/calendar'
 import type { CalEvent } from '@agenda/back/src/db'
 
 const today = new Date()
@@ -109,8 +110,8 @@ function getCalendar(scroll = false) {
       startDate: startTimestamp,
       endDate: endTimestamp
     })
-    .then((data: CalendarOnChange) => {
-      addToCalendar(data, scroll)
+    .then((events: CalEvent[]) => {
+      addToCalendar(events, scroll)
     })
 
   changeSubscription = client.calendar.changes.subscribe(
@@ -195,7 +196,15 @@ function addToCalendar(events: CalEvent[], scroll = false) {
     })
   })
 
-  eventsPerHour.value = newEventsPerHour
+  for (const hour in newEventsPerHour) {
+    if (
+      !eventsPerHour.value[hour] ||
+      eventsPerHour.value[hour].length !== newEventsPerHour[hour].length
+    ) {
+      eventsPerHour.value[hour] = newEventsPerHour[hour]
+    }
+  }
+
   if (scroll) {
     setTimeout(() => {
       scrollToHour(today.getHours(), today.getMinutes() < 30 ? 0 : 30)
