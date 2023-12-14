@@ -30,9 +30,7 @@
         </div>
       </div>
 
-      <div class="text-base font-medium text-white ml-auto mr-4">
-        FPS: {{ fps }}
-      </div>
+      <div class="text-base font-medium text-white ml-auto mr-4">FPS: {{ fps }}</div>
 
       <div class="-mr-2 flex md:hidden">
         <!-- Mobile menu button -->

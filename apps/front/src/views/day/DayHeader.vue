@@ -10,7 +10,7 @@
 
     <div class="flex space-x-4 mt-4">
       <Button @click="() => add(5)"> +5 </Button>
-      <Button @click="() => add(500)"> +500 </Button>
+      <Button @click="() => add(50)"> +50 </Button>
     </div>
   </div>
 </template>

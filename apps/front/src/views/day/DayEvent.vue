@@ -17,10 +17,7 @@
         </span>
       </template>
     </div>
-    <div
-      v-if="isEventStartAfterIntervalStart"
-      class="text-sm line-clamp-1"
-    >
+    <div v-if="isEventStartAfterIntervalStart" class="text-sm line-clamp-1">
       {{ event.data }}
     </div>
     <div
