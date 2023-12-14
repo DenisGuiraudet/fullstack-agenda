@@ -29,6 +29,10 @@ const props = defineProps({
   count: {
     type: Number,
     default: 0
+  },
+  maxCount: {
+    type: Number,
+    default: 0
   }
 })
 
@@ -37,18 +41,18 @@ const colorClass = computed<string>(() => {
     return ''
   }
 
-  if (props.count === 0) {
+  if (props.count === 0 || props.maxCount === 0) {
     return 'bg-gray-200 mix-blend-multiply'
   }
 
-  if (props.count >= 1000) {
+  if (props.count >= (props.maxCount / 3) * 2) {
     return 'bg-red-400 mix-blend-multiply'
   }
 
-  if (props.count >= 500) {
+  if (props.count >= props.maxCount / 3) {
     return 'bg-orange-400 mix-blend-multiply'
   }
 
-  return 'bg-yellow-400 mix-blend-multiply'
+  return 'bg-amber-400 mix-blend-multiply'
 })
 </script>

@@ -27,14 +27,15 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-7">
+        <div class="grid grid-cols-7 divide-x divide-y">
           <DayCell v-for="day in beforeDays" :key="`${year}-${month}-before-${day}`" disabled />
 
           <DayCell
             v-for="day in activeDays"
             :key="`${year}-${month}-active-${day}`"
             :active="day === todayDay"
-            :count="day === 10 ? 0 : day * 60"
+            :count="countByDay[day] || 0"
+            :max-count="maxCount"
           >
             {{ day }}
           </DayCell>
@@ -47,13 +48,15 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { ViewLayout } from '@agenda/ui/layouts'
 import MonthHeader from '@/views/month/MonthHeader.vue'
 import DayCell from '@/components/DayCell.vue'
 import { useTrpcClient } from '@/composables/trpc'
+import type { CalendarOnChange } from '@agenda/back/src/routes/calendar'
+import type { CalEvent } from '@agenda/back/src/db'
 
-const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 const today = new Date()
 const todayDay = today.getDate()
@@ -64,6 +67,11 @@ const year = ref<number>(today.getFullYear())
 const beforeDays = ref<number[]>([])
 const activeDays = ref<number[]>([])
 const afterDays = ref<number[]>([])
+
+const countByDay = ref<Record<number, number>>({})
+const maxCount = computed<number>(() => {
+  return Math.max(...Object.values(countByDay.value))
+})
 
 const client = useTrpcClient()
 let changeSubscription: any = null
@@ -94,28 +102,43 @@ function computeDaysToDisplay() {
 }
 
 function getCalendar() {
+  countByDay.value = {}
+
   client.calendar.get
     .query({
       startDate: new Date(year.value, month.value, 1).getTime(),
-      endDate: new Date(year.value, month.value + 1, 0).getTime()
+      endDate: new Date(year.value, month.value + 1, 0, 23, 59, 59).getTime()
     })
-    .then((data) => {
-      console.log(data)
+    .then((data: CalendarOnChange) => {
+      addToCalendar(data)
     })
 
-  changeSubscription = client.calendar.onChange.subscribe(
-    {
-      startDate: new Date(year.value, month.value, 1).getTime(),
-      endDate: new Date(year.value, month.value + 1, 0).getTime()
-    },
-    {
-      onData(data) {
-        console.log('received', data)
+  changeSubscription = client.calendar.onChange
+    .subscribe(
+      {
+        startDate: new Date(year.value, month.value, 1).getTime(),
+        endDate: new Date(year.value, month.value + 1, 0, 23, 59, 59).getTime()
       },
-      onError(error) {
-        console.error('error', error)
+      {
+        onData(data: CalendarOnChange) {
+          if (data.type === 'ADD') {
+            addToCalendar(data.events)
+          }
+        },
+        onError(error) {
+          console.error(error)
+        }
       }
-    }
-  )
+    )
+}
+
+function addToCalendar (events: CalEvent[]) {
+  const newCountByDay: Record<number, number> = JSON.parse(JSON.stringify(countByDay.value))
+  events.forEach((event) => {
+    const date = new Date(event.start)
+    const day = date.getDate()
+    newCountByDay[day] = (newCountByDay[day] || 0) + 1
+  })
+  countByDay.value = newCountByDay
 }
 </script>

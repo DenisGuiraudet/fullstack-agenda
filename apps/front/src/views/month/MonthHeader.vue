@@ -9,7 +9,7 @@
       <SelectYear
         class="z-10"
         :selected-year="selectedYear"
-        @update:selected-year="(value) => $emit('update:selectedMonth', value)"
+        @update:selected-year="(value) => $emit('update:selectedYear', value)"
       />
     </div>
 
@@ -38,15 +38,16 @@ const props = defineProps({
   }
 })
 
-defineEmits(['update:selectedYear', 'update:selectedMonth'])
+defineEmits(['update:selectedMonth', 'update:selectedYear'])
 
 const client = useTrpcClient()
 
 function add(count: number) {
-  client.calendar.add.mutate({
-    startDate: new Date(props.selectedYear, props.selectedMonth, 1).getTime(),
-    endDate: new Date(props.selectedYear, props.selectedMonth + 1, 0).getTime(),
-    count
-  })
+  client.calendar.add
+    .mutate({
+      startDate: new Date(props.selectedYear, props.selectedMonth, 1).getTime(),
+      endDate: new Date(props.selectedYear, props.selectedMonth + 1, 0, 23, 59, 59).getTime(),
+      count
+    })
 }
 </script>
