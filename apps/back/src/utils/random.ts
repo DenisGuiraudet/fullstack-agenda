@@ -98,8 +98,8 @@ export function randomSentence(): string {
   )
 }
 
-function randomValueBetween(min: number, max: number): number {
-  return Math.random() * (max - min) + min
+export function randomValueBetween(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min) + min)
 }
 
 // timestamp

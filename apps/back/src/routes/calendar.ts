@@ -4,8 +4,8 @@ import { randomUUID } from 'node:crypto'
 import { observable } from '@trpc/server/observable'
 import { T } from '../../index'
 import { CalEvent, dbCalEvent } from '../db'
-import { addHours } from '../utils/date'
-import { randomDate, randomSentence } from '../utils/random'
+import { addTime } from '../utils/date'
+import { randomDate, randomSentence, randomValueBetween } from '../utils/random'
 
 // create a global event emitter (could be replaced by redis, etc)
 const ee = new EventEmitter()
@@ -44,10 +44,15 @@ export function calendarRouter(t: T) {
         const events: CalEvent[] = []
         for (let i = 0; i < count; i++) {
           const date = randomDate(startDate, endDate)
+          const random = randomValueBetween(0, 3)
           events.push({
             uuid: randomUUID(),
             start: date,
-            end: addHours(date, 1),
+            end: addTime(
+              date,
+              randomValueBetween(1, random === 0 ? 36 : 12),
+              randomValueBetween(0, 60)
+            ),
             data: `${i} ${randomSentence()}`
           })
         }

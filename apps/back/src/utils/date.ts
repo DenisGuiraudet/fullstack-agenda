@@ -1,4 +1,3 @@
-// timestamp
-export function addHours(date: number, hours: number): number {
-  return date + hours * 60 * 60 * 1000
+export function addTime(date: number, hours: number, minutes: number): number {
+  return date + hours * 60 * 60 * 1000 + minutes * 60 * 1000
 }
