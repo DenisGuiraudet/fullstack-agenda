@@ -10,10 +10,7 @@
 
     <main class="view-layout-content flex-1 flex overflow-hidden">
       <div class="flex-1 flex overflow-auto">
-        <div
-          class="flex-1 m-auto max-w-7xl sm:py-6 sm:px-6 lg:px-8"
-          :class="contentClass"
-        >
+        <div class="flex-1 m-auto max-w-7xl sm:py-6 sm:px-6 lg:px-8" :class="contentClass">
           <slot />
         </div>
       </div>
@@ -25,8 +22,8 @@
 defineProps({
   contentClass: {
     type: String,
-    default: '',
-  },
+    default: ''
+  }
 })
 </script>
 

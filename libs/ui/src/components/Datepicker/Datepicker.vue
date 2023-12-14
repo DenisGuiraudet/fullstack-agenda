@@ -2,7 +2,7 @@
   <div class="relative max-w-sm">
     <input
       type="date"
-      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      class="relative w-full cursor-default rounded-lg bg-white py-2 px-3 text-left ring-offset-2 ring-2 focus:outline-none focus-visible:border-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 text-sm"
       placeholder="Select date"
       @change="onChange"
     />

@@ -61,8 +61,8 @@ const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 const today = new Date()
 const todayDay = today.getDate()
 
-const month = ref<number>(today.getMonth())
 const year = ref<number>(today.getFullYear())
+const month = ref<number>(today.getMonth())
 
 const beforeDays = ref<number[]>([])
 const activeDays = ref<number[]>([])
@@ -113,7 +113,7 @@ function getCalendar() {
   client.calendar.get
     .query({
       startDate: new Date(year.value, month.value, 1).getTime(),
-      endDate: new Date(year.value, month.value + 1, 0, 23, 59, 59).getTime()
+      endDate: new Date(year.value, month.value + 1, 0, 23, 59, 59, 999).getTime()
     })
     .then((data: CalendarOnChange) => {
       addToCalendar(data)
@@ -122,7 +122,7 @@ function getCalendar() {
   changeSubscription = client.calendar.changes.subscribe(
     {
       startDate: new Date(year.value, month.value, 1).getTime(),
-      endDate: new Date(year.value, month.value + 1, 0, 23, 59, 59).getTime()
+      endDate: new Date(year.value, month.value + 1, 0, 23, 59, 59, 999).getTime()
     },
     {
       onData(data: CalendarOnChange) {
