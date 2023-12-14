@@ -1,5 +1,5 @@
 <template>
-  <ViewLayout>
+  <ViewLayout contentClass="min-w-[896px]">
     <template #header>
       <MonthHeader
         :selected-month="month"
@@ -18,7 +18,7 @@
     </template>
 
     <div class="bg-white sm:rounded-lg shadow overflow-hidden">
-      <div class="min-w-[896px] -m-px">
+      <div class="-m-px">
         <div class="grid grid-cols-7 -mb-10">
           <div v-for="day in DAYS" :key="day" class="px-2 py-2">
             <div class="text-gray-600 text-sm uppercase tracking-wide font-bold text-center">

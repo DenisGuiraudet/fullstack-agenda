@@ -9,8 +9,11 @@
     </header>
 
     <main class="view-layout-content flex-1 flex overflow-hidden">
-      <div class="flex-1 overflow-auto">
-        <div class="mx-auto max-w-7xl sm:py-6 sm:px-6 lg:px-8">
+      <div class="flex-1 flex overflow-auto">
+        <div
+          class="flex-1 m-auto max-w-7xl sm:py-6 sm:px-6 lg:px-8"
+          :class="contentClass"
+        >
           <slot />
         </div>
       </div>
@@ -18,7 +21,14 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps({
+  contentClass: {
+    type: String,
+    default: '',
+  },
+})
+</script>
 
 <style>
 .view-layout-content {
