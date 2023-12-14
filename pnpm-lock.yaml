@@ -17,7 +17,7 @@ importers:
     devDependencies:
       '@nx/js':
         specifier: 17.2.0
-        version: 17.2.0(@types/node@20.10.4)(nx@17.2.0)(typescript@5.3.3)
+        version: 17.2.0(@types/node@18.19.3)(nx@17.2.0)(typescript@5.2.2)
       nx:
         specifier: 17.2.0
         version: 17.2.0
@@ -155,7 +155,7 @@ importers:
         version: 7.6.4(react@18.2.0)
       '@storybook/addon-styling':
         specifier: ^1.3.2
-        version: 1.3.7(less@4.2.0)(postcss@8.4.32)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)(webpack@5.89.0)
+        version: 1.3.7(less@4.2.0)(postcss@8.4.32)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(webpack@5.89.0)
       '@storybook/blocks':
         specifier: ^7.0.24
         version: 7.6.4(react-dom@18.2.0)(react@18.2.0)
@@ -167,7 +167,7 @@ importers:
         version: 7.6.4(@vue/compiler-core@3.3.11)(vue@3.3.11)
       '@storybook/vue3-vite':
         specifier: ^7.0.24
-        version: 7.6.4(@vue/compiler-core@3.3.11)(typescript@5.3.3)(vite@5.0.8)(vue@3.3.11)
+        version: 7.6.4(@vue/compiler-core@3.3.11)(typescript@5.2.2)(vite@5.0.8)(vue@3.3.11)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -2338,10 +2338,10 @@ packages:
       - nx
     dev: true
 
-  /@nrwl/js@17.2.0(@types/node@20.10.4)(nx@17.2.0)(typescript@5.3.3):
+  /@nrwl/js@17.2.0(@types/node@18.19.3)(nx@17.2.0)(typescript@5.2.2):
     resolution: {integrity: sha512-uyGt9nUam1QJIhaEZ8isZh82dCpN4CX6AdyOlRJRf1RUSkk9exOT3U0CweCw8dYIS6sz/D7AoGJdz8aW4aGfCg==}
     dependencies:
-      '@nx/js': 17.2.0(@types/node@20.10.4)(nx@17.2.0)(typescript@5.3.3)
+      '@nx/js': 17.2.0(@types/node@18.19.3)(nx@17.2.0)(typescript@5.2.2)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -2392,7 +2392,7 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@nx/js@17.2.0(@types/node@20.10.4)(nx@17.2.0)(typescript@5.3.3):
+  /@nx/js@17.2.0(@types/node@18.19.3)(nx@17.2.0)(typescript@5.2.2):
     resolution: {integrity: sha512-ouWtSKVxH1FeBkLgWfi4FOwAC1qsmuwni7AXQocuk4GNr/yqD27hZEuaaW44TgoZ0aGrKU2LW8/lv18/DOCBew==}
     peerDependencies:
       verdaccio: ^5.0.4
@@ -2407,10 +2407,10 @@ packages:
       '@babel/preset-env': 7.23.6(@babel/core@7.23.6)
       '@babel/preset-typescript': 7.23.3(@babel/core@7.23.6)
       '@babel/runtime': 7.23.6
-      '@nrwl/js': 17.2.0(@types/node@20.10.4)(nx@17.2.0)(typescript@5.3.3)
+      '@nrwl/js': 17.2.0(@types/node@18.19.3)(nx@17.2.0)(typescript@5.2.2)
       '@nx/devkit': 17.2.0(nx@17.2.0)
       '@nx/workspace': 17.2.0
-      '@phenomnomnominal/tsquery': 5.0.1(typescript@5.3.3)
+      '@phenomnomnominal/tsquery': 5.0.1(typescript@5.2.2)
       babel-plugin-const-enum: 1.2.0(@babel/core@7.23.6)
       babel-plugin-macros: 2.8.0
       babel-plugin-transform-typescript-metadata: 0.3.2(@babel/core@7.23.6)
@@ -2427,7 +2427,7 @@ packages:
       ora: 5.3.0
       semver: 7.5.3
       source-map-support: 0.5.19
-      ts-node: 10.9.1(@types/node@20.10.4)(typescript@5.3.3)
+      ts-node: 10.9.1(@types/node@18.19.3)(typescript@5.2.2)
       tsconfig-paths: 4.2.0
       tslib: 2.6.2
     transitivePeerDependencies:
@@ -2552,13 +2552,13 @@ packages:
     resolution: {integrity: sha512-XuySG1E38YScSJoMlqovLru4KTUNSjgVTIjyh7qMX6aNN5HY5Ct5LhRJdxO79JtTzKfzV/bnWpz+zquYrISsvw==}
     dev: true
 
-  /@phenomnomnominal/tsquery@5.0.1(typescript@5.3.3):
+  /@phenomnomnominal/tsquery@5.0.1(typescript@5.2.2):
     resolution: {integrity: sha512-3nVv+e2FQwsW8Aw6qTU6f+1rfcJ3hrcnvH/mu9i8YhxO+9sqbOfpL8m6PbET5+xKOlz/VSbp0RoYWYCtIsnmuA==}
     peerDependencies:
       typescript: ^3 || ^4 || ^5
     dependencies:
       esquery: 1.5.0
-      typescript: 5.3.3
+      typescript: 5.2.2
     dev: true
 
   /@pkgjs/parseargs@0.11.0:
@@ -3469,7 +3469,7 @@ packages:
       ts-dedent: 2.2.0
     dev: true
 
-  /@storybook/addon-styling@1.3.7(less@4.2.0)(postcss@8.4.32)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)(webpack@5.89.0):
+  /@storybook/addon-styling@1.3.7(less@4.2.0)(postcss@8.4.32)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(webpack@5.89.0):
     resolution: {integrity: sha512-JSBZMOrSw/3rlq5YoEI7Qyq703KSNP0Jd+gxTWu3/tP6245mpjn2dXnR8FvqVxCi+FG4lt2kQyPzgsuwEw1SSA==}
     hasBin: true
     peerDependencies:
@@ -3505,7 +3505,7 @@ packages:
       less: 4.2.0
       less-loader: 11.1.3(less@4.2.0)(webpack@5.89.0)
       postcss: 8.4.32
-      postcss-loader: 7.3.3(postcss@8.4.32)(typescript@5.3.3)(webpack@5.89.0)
+      postcss-loader: 7.3.3(postcss@8.4.32)(typescript@5.2.2)(webpack@5.89.0)
       prettier: 2.8.8
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -3606,7 +3606,7 @@ packages:
       - encoding
       - supports-color
 
-  /@storybook/builder-vite@7.6.4(typescript@5.3.3)(vite@5.0.8):
+  /@storybook/builder-vite@7.6.4(typescript@5.2.2)(vite@5.0.8):
     resolution: {integrity: sha512-eqb3mLUfuXd4a7+46cWevQ9qH81FvHy1lrAbZGwp4bQ/Tj0YF8Ej7lKBbg7zoIwiu2zDci+BbMiaDOY1kPtILw==}
     peerDependencies:
       '@preact/preset-vite': '*'
@@ -3637,8 +3637,8 @@ packages:
       fs-extra: 11.2.0
       magic-string: 0.30.5
       rollup: 3.29.4
-      typescript: 5.3.3
-      vite: 5.0.8(@types/node@20.10.4)(less@4.2.0)
+      typescript: 5.2.2
+      vite: 5.0.8(@types/node@18.19.3)(less@4.2.0)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -4033,18 +4033,18 @@ packages:
       '@types/express': 4.17.21
       file-system-cache: 2.3.0
 
-  /@storybook/vue3-vite@7.6.4(@vue/compiler-core@3.3.11)(typescript@5.3.3)(vite@5.0.8)(vue@3.3.11):
+  /@storybook/vue3-vite@7.6.4(@vue/compiler-core@3.3.11)(typescript@5.2.2)(vite@5.0.8)(vue@3.3.11):
     resolution: {integrity: sha512-M1cT6lZsRqwws+H+pv2K/jJGiXUfGHAz7nc0DwK/YYT/w0OOVp5hinh/IvNwIYW5zUmwIyQVEoGrrxQEi0S79w==}
     engines: {node: ^14.18 || >=16}
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0 || ^5.0.0
     dependencies:
-      '@storybook/builder-vite': 7.6.4(typescript@5.3.3)(vite@5.0.8)
+      '@storybook/builder-vite': 7.6.4(typescript@5.2.2)(vite@5.0.8)
       '@storybook/core-server': 7.6.4
       '@storybook/vue3': 7.6.4(@vue/compiler-core@3.3.11)(vue@3.3.11)
       '@vitejs/plugin-vue': 4.5.2(vite@5.0.8)(vue@3.3.11)
       magic-string: 0.30.5
-      vite: 5.0.8(@types/node@20.10.4)(less@4.2.0)
+      vite: 5.0.8(@types/node@18.19.3)(less@4.2.0)
       vue-docgen-api: 4.75.1(vue@3.3.11)
     transitivePeerDependencies:
       - '@preact/preset-vite'
@@ -4074,7 +4074,7 @@ packages:
       lodash: 4.17.21
       ts-dedent: 2.2.0
       type-fest: 2.19.0
-      vue: 3.3.11(typescript@5.3.3)
+      vue: 3.3.11(typescript@5.2.2)
       vue-component-type-helpers: 1.8.25
     transitivePeerDependencies:
       - encoding
@@ -4300,12 +4300,6 @@ packages:
     resolution: {integrity: sha512-k5fggr14DwAytoA/t8rPrIz++lXK7/DqckthCmoZOKNsEbJkId4Z//BqgApXBUGrGddrigYa1oqheo/7YmW4rg==}
     dependencies:
       undici-types: 5.26.5
-
-  /@types/node@20.10.4:
-    resolution: {integrity: sha512-D08YG6rr8X90YB56tSIuBaddy/UXAA9RKJoFvrsnogAum/0pmjkgi4+2nx96A330FmioegBWmEYQ+syqCFaveg==}
-    dependencies:
-      undici-types: 5.26.5
-    dev: true
 
   /@types/normalize-package-data@2.4.4:
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -4542,8 +4536,8 @@ packages:
       vite: ^4.0.0 || ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 5.0.8(@types/node@20.10.4)(less@4.2.0)
-      vue: 3.3.11(typescript@5.3.3)
+      vite: 5.0.8(@types/node@18.19.3)(less@4.2.0)
+      vue: 3.3.11(typescript@5.2.2)
     dev: true
 
   /@vitest/expect@1.0.4:
@@ -5736,7 +5730,7 @@ packages:
       yaml: 1.10.2
     dev: true
 
-  /cosmiconfig@8.3.6(typescript@5.3.3):
+  /cosmiconfig@8.3.6(typescript@5.2.2):
     resolution: {integrity: sha512-kcZ6+W5QzcJ3P1Mt+83OUv/oHFqZHIx8DuxG6eZ5RGMERoLqp4BuGjhHLYGK+Kf5XVkQvqBSmAy/nGWN3qDgEA==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -5749,7 +5743,7 @@ packages:
       js-yaml: 4.1.0
       parse-json: 5.2.0
       path-type: 4.0.0
-      typescript: 5.3.3
+      typescript: 5.2.2
     dev: true
 
   /create-require@1.1.1:
@@ -7538,7 +7532,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 20.10.4
+      '@types/node': 18.19.3
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: true
@@ -8722,14 +8716,14 @@ packages:
       yaml: 2.3.4
     dev: true
 
-  /postcss-loader@7.3.3(postcss@8.4.32)(typescript@5.3.3)(webpack@5.89.0):
+  /postcss-loader@7.3.3(postcss@8.4.32)(typescript@5.2.2)(webpack@5.89.0):
     resolution: {integrity: sha512-YgO/yhtevGO/vJePCQmTxiaEwER94LABZN0ZMT4A0vsak9TpO+RvKRs7EmJ8peIlB9xfXCsS7M8LjqncsUZ5HA==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       postcss: ^7.0.0 || ^8.0.1
       webpack: ^5.0.0
     dependencies:
-      cosmiconfig: 8.3.6(typescript@5.3.3)
+      cosmiconfig: 8.3.6(typescript@5.2.2)
       jiti: 1.21.0
       postcss: 8.4.32
       semver: 7.5.4
@@ -10166,7 +10160,7 @@ packages:
     resolution: {integrity: sha512-vDWbsl26LIcPGmDpoVzjEP6+hvHZkBkLW7JpvwbCv/5IYPJlsbzCVXY3wsCeAxAUeTclNOUZxnLdGh3VBD/J6w==}
     dev: true
 
-  /ts-node@10.9.1(@types/node@20.10.4)(typescript@5.3.3):
+  /ts-node@10.9.1(@types/node@18.19.3)(typescript@5.2.2):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -10185,14 +10179,14 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.10.4
+      '@types/node': 18.19.3
       acorn: 8.11.2
       acorn-walk: 8.3.1
       arg: 4.1.3
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 5.3.3
+      typescript: 5.2.2
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     dev: true
@@ -10283,12 +10277,6 @@ packages:
     resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
     engines: {node: '>=14.17'}
     hasBin: true
-
-  /typescript@5.3.3:
-    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-    dev: true
 
   /ufo@1.3.2:
     resolution: {integrity: sha512-o+ORpgGwaYQXgqGDwd+hkS4PuZ3QnmqMMxRuajK/a38L6fTpcE5GPIfrf+L/KemFzfUpeUQc1rRS1iDBozvnFA==}
@@ -10537,7 +10525,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vite@5.0.8(@types/node@20.10.4)(less@4.2.0):
+  /vite@5.0.8(@types/node@18.19.3)(less@4.2.0):
     resolution: {integrity: sha512-jYMALd8aeqR3yS9xlHd0OzQJndS9fH5ylVgWdB+pxTwxLKdO1pgC5Dlb398BUxpfaBxa4M9oT7j1g503Gaj5IQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -10565,7 +10553,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.10.4
+      '@types/node': 18.19.3
       esbuild: 0.19.9
       less: 4.2.0
       postcss: 8.4.32
@@ -10656,7 +10644,7 @@ packages:
       pug: 3.0.2
       recast: 0.23.4
       ts-map: 1.0.3
-      vue: 3.3.11(typescript@5.3.3)
+      vue: 3.3.11(typescript@5.2.2)
       vue-inbrowser-compiler-independent-utils: 4.71.1(vue@3.3.11)
     dev: true
 
@@ -10683,7 +10671,7 @@ packages:
     peerDependencies:
       vue: '>=2'
     dependencies:
-      vue: 3.3.11(typescript@5.3.3)
+      vue: 3.3.11(typescript@5.2.2)
     dev: true
 
   /vue-router@4.2.5(vue@3.3.11):
@@ -10728,22 +10716,6 @@ packages:
       '@vue/server-renderer': 3.3.11(vue@3.3.11)
       '@vue/shared': 3.3.11
       typescript: 5.2.2
-
-  /vue@3.3.11(typescript@5.3.3):
-    resolution: {integrity: sha512-d4oBctG92CRO1cQfVBZp6WJAs0n8AK4Xf5fNjQCBeKCvMI1efGQ5E3Alt1slFJS9fZuPcFoiAiqFvQlv1X7t/w==}
-    peerDependencies:
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@vue/compiler-dom': 3.3.11
-      '@vue/compiler-sfc': 3.3.11
-      '@vue/runtime-dom': 3.3.11
-      '@vue/server-renderer': 3.3.11(vue@3.3.11)
-      '@vue/shared': 3.3.11
-      typescript: 5.3.3
-    dev: true
 
   /w3c-xmlserializer@5.0.0:
     resolution: {integrity: sha512-o8qghlI8NZHU1lLPrpi2+Uq7abh4GGPpYANlalzWxyWteJOCsr/P+oPBA49TOLu5FTZO4d3F9MnWJfiMo4BkmA==}

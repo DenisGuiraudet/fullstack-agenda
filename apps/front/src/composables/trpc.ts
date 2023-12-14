@@ -14,23 +14,23 @@ function initClient() {
   if (client) return
 
   const wsClient = createWSClient({
-    url: `ws://localhost:2022`,
-  });
+    url: `ws://localhost:2022`
+  })
 
   client = createTRPCProxyClient<AppRouter>({
     links: [
       // call subscriptions through websockets and the rest over http
       splitLink({
-        condition (op) {
-          return op.type === 'subscription';
+        condition(op) {
+          return op.type === 'subscription'
         },
         true: wsLink({
-          client: wsClient,
+          client: wsClient
         }),
         false: httpBatchLink({
-          url: `http://localhost:2022`,
-        }),
-      }),
+          url: `http://localhost:2022`
+        })
+      })
     ]
   })
 }

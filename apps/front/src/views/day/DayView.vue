@@ -1,8 +1,16 @@
 <template>
   <ViewLayout>
-    <template #header> Header </template>
+    <template #header>
+      <Datepicker
+        class="z-10"
+        v-model="date"
+      />
+    </template>
 
-    <div class="flex flex-col bg-white sm:rounded-lg shadow overflow-auto">
+    <div
+      v-if="date"
+      class="flex flex-col bg-white sm:rounded-lg shadow overflow-auto"
+    >
       <div class="flex-1 flex p-4">
         <div class="flex-0"></div>
         <div class="flex-1">
@@ -19,5 +27,9 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import { ViewLayout } from '@agenda/ui/layouts'
+import { Datepicker } from '@agenda/ui/components'
+
+const date = ref<Date>(new Date())
 </script>

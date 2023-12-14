@@ -119,26 +119,25 @@ function getCalendar() {
       addToCalendar(data)
     })
 
-  changeSubscription = client.calendar.changes
-    .subscribe(
-      {
-        startDate: new Date(year.value, month.value, 1).getTime(),
-        endDate: new Date(year.value, month.value + 1, 0, 23, 59, 59).getTime()
-      },
-      {
-        onData(data: CalendarOnChange) {
-          if (data.type === 'ADD') {
-            addToCalendar(data.events)
-          }
-        },
-        onError(error) {
-          console.error(error)
+  changeSubscription = client.calendar.changes.subscribe(
+    {
+      startDate: new Date(year.value, month.value, 1).getTime(),
+      endDate: new Date(year.value, month.value + 1, 0, 23, 59, 59).getTime()
+    },
+    {
+      onData(data: CalendarOnChange) {
+        if (data.type === 'ADD') {
+          addToCalendar(data.events)
         }
+      },
+      onError(error) {
+        console.error(error)
       }
-    )
+    }
+  )
 }
 
-function addToCalendar (events: CalEvent[]) {
+function addToCalendar(events: CalEvent[]) {
   const newCountByDay: Record<number, number> = JSON.parse(JSON.stringify(countByDay.value))
   events.forEach((event) => {
     const date = new Date(event.start)

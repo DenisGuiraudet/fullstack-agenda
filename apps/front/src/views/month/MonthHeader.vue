@@ -43,11 +43,10 @@ defineEmits(['update:selectedMonth', 'update:selectedYear'])
 const client = useTrpcClient()
 
 function add(count: number) {
-  client.calendar.add
-    .mutate({
-      startDate: new Date(props.selectedYear, props.selectedMonth, 1).getTime(),
-      endDate: new Date(props.selectedYear, props.selectedMonth + 1, 0, 23, 59, 59).getTime(),
-      count
-    })
+  client.calendar.add.mutate({
+    startDate: new Date(props.selectedYear, props.selectedMonth, 1).getTime(),
+    endDate: new Date(props.selectedYear, props.selectedMonth + 1, 0, 23, 59, 59).getTime(),
+    count
+  })
 }
 </script>
