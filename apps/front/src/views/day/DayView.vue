@@ -1,7 +1,10 @@
 <template>
   <ViewLayout>
     <template #header>
-      <Datepicker class="z-10" v-model="date" />
+      <DayHeader
+        class="z-10"
+        v-model:selected-date="date"
+      />
     </template>
 
     <div v-if="date" class="flex flex-col bg-white sm:rounded-lg shadow overflow-auto">
@@ -55,8 +58,8 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { ViewLayout } from '@agenda/ui/layouts'
-import { Datepicker } from '@agenda/ui/components'
 import { useTrpcClient } from '@/composables/trpc'
+import DayHeader from '@/views/day/DayHeader.vue'
 import DayEvent from '@/views/day/DayEvent.vue'
 import type { CalEvent } from '@agenda/back/src/db'
 
@@ -96,6 +99,10 @@ function getCalendar(scroll = false) {
   }
 
   eventsPerHour.value = {}
+
+  if (!date.value) {
+    return
+  }
 
   const startTimestamp = new Date(date.value).setHours(0, 0, 0, 0)
   const endTimestamp = new Date(date.value).setHours(23, 59, 59, 999)
@@ -200,7 +207,6 @@ function addToCalendar(events: CalEvent[], scroll = false) {
 }
 
 function scrollToHour(hour: number, minutes: 0 | 30) {
-  console.log('scrollToHour', hour, minutes)
   const hourElement = document.getElementById(`hour-${hour}-${minutes}`)
   if (hourElement) {
     hourElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
