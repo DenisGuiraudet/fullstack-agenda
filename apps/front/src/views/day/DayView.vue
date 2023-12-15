@@ -4,7 +4,8 @@
       <DayHeader class="z-10" v-model:selected-date="date" />
     </template>
 
-    <div v-if="date" class="flex flex-col bg-white sm:rounded-lg shadow overflow-auto">
+    <div v-if="date" class="flex items-stretch bg-white sm:rounded-lg shadow overflow-auto">
+      <div class="w-4 bg-gradient-to-b from-red-300 from-10% via-yellow-300 via-30% to-orange-300 to-90%" />
       <div class="flex-1 flex flex-col p-4">
         <template v-for="i in 25" :key="i">
           <div :id="`hour-${i - 1}-0`" class="flex py-2">

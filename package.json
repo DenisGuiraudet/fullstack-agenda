@@ -5,6 +5,7 @@
   "scripts": {
     "back": "nx dev @agenda/back",
     "front": "nx dev @agenda/front",
+    "front:debug": "nx dev:debug @agenda/front",
     "storybook": "nx storybook @agenda/storybook",
     "format": "nx run-many -t format"
   },

@@ -46,13 +46,13 @@ const colorClass = computed<string>(() => {
   }
 
   if (props.count >= (props.maxCount / 3) * 2) {
-    return 'bg-red-400 mix-blend-multiply'
+    return 'bg-red-300 mix-blend-multiply'
   }
 
   if (props.count >= props.maxCount / 3) {
-    return 'bg-orange-400 mix-blend-multiply'
+    return 'bg-orange-300 mix-blend-multiply'
   }
 
-  return 'bg-amber-400 mix-blend-multiply'
+  return 'bg-yellow-300 mix-blend-multiply'
 })
 </script>
