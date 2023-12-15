@@ -4,11 +4,11 @@
       <DayHeader class="z-10" v-model:selected-date="date" />
     </template>
 
-    <div v-if="date" class="flex items-stretch bg-white sm:rounded-lg shadow overflow-auto">
-      <div class="w-4 bg-gradient-to-b from-red-300 from-10% via-yellow-300 via-30% to-orange-300 to-90%" />
-      <div class="flex-1 flex flex-col p-4">
+    <div v-if="date" class="flex bg-white sm:rounded-lg shadow">
+      <div class="w-4 h-screen sticky -top-2 sm:rounded-l-lg bg-gradient-to-b from-red-300 from-10% via-yellow-300 via-30% to-orange-300 to-90%" />
+      <div class="flex-1 flex flex-col p-4 relative">
         <template v-for="i in 25" :key="i">
-          <div :id="`hour-${i - 1}-0`" class="flex py-2">
+          <div :id="`hour-${i - 1}-0`" class="flex py-2 sticky top-0 z-10 bg-white">
             <div class="flex-0 pr-4 text-gray-600 text-sm uppercase tracking-wide font-bold">
               {{ `0${i - 1}`.slice(-2) + 'h00' }}
             </div>
@@ -28,7 +28,7 @@
           <div v-else class="text-center">...</div>
 
           <template v-if="i !== 25">
-            <div :id="`hour-${i - 1}-30`" class="flex py-2">
+            <div :id="`hour-${i - 1}-30`" class="flex py-2 sticky top-0 z-10 bg-white">
               <div class="flex-0 pr-4 text-gray-600 text-sm uppercase tracking-wide font-bold">
                 {{ `0${i - 1}`.slice(-2) + 'h30' }}
               </div>

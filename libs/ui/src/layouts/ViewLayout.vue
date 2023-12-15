@@ -1,6 +1,6 @@
 <template>
   <div class="flex-1 flex flex-col overflow-hidden">
-    <header v-if="$slots.header" class="bg-white shadow z-10">
+    <header v-if="$slots.header" class="bg-white shadow z-20">
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <h1 class="text-3xl font-bold tracking-tight text-gray-900">
           <slot name="header" />
@@ -9,7 +9,7 @@
     </header>
 
     <main class="view-layout-content flex-1 flex overflow-hidden">
-      <div class="flex-1 flex overflow-auto">
+      <div class="flex-1 flex overflow-auto relative">
         <div class="flex-1 m-auto max-w-7xl sm:py-6 sm:px-6 lg:px-8" :class="contentClass">
           <slot />
         </div>
