@@ -53,6 +53,6 @@ const colorClass = computed<string>(() => {
     return 'bg-orange-300 mix-blend-multiply'
   }
 
-  return 'bg-yellow-300 mix-blend-multiply'
+  return 'bg-yellow-200 mix-blend-multiply'
 })
 </script>

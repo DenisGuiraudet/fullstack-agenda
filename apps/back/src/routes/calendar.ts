@@ -50,7 +50,7 @@ export function calendarRouter(t: T) {
             start: date,
             end: addTime(
               date,
-              randomValueBetween(1, random === 0 ? 36 : 12),
+              randomValueBetween(1, random === 0 ? 12 : 2),
               randomValueBetween(0, 60)
             ),
             data: randomSentence()
